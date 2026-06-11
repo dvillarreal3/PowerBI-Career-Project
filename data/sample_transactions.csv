@@ -1,0 +1,7 @@
+id,description,amount
+1,Sale A,"$1,234.56"
+2,Sale B,"1 234,56"
+3,Refund,"(1,234.56)"
+4,Charge,"€1.234,56"
+5,Other,abc
+6,NoValue,

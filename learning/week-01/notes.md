@@ -41,3 +41,23 @@ Notes on TDD and testing practice
 Resources for testing
 - Pytest: https://docs.pytest.org/
 - Testing in Python (Real Python): https://realpython.com/pytest-python-testing/
+
+Questions & answers
+Q: Are tests connecting to another data source or hardwired?
+A: These unit tests are hardwired — they call functions with example inputs (strings, numbers). They don't hit external systems. This is intentional: unit tests verify function correctness in isolation. Integration or end-to-end tests can exercise live or staging data and external services.
+
+Q: Why test on hardcoded values rather than live data?
+A: Hardcoded tests are deterministic, fast, and repeatable — ideal for CI. Live-data tests are useful for validating end-to-end behavior but are slower, flaky, and require environment setup. Production pipelines typically have both: unit tests for logic, integration tests for systems.
+
+Q: How do tests and src relate? Why imports work without cache files?
+A: Tests import modules from the project root (e.g., import src.etl_utils). Python adds project root to sys.path when running pytest, so 'src' is importable. __pycache__ contains compiled .pyc files — optional and recreated automatically; tests use source .py files.
+
+Added artifacts (run/test):
+- Docstring doctests are enabled via tests/test_doctests.py and run with pytest.
+- Sample data: data/sample_transactions.csv — demonstrates parsing across locales.
+- Demo script: scripts/parse_sample.py — run to show parsing output.
+
+Next steps
+- Run `python -m pytest -q` to execute unit + doctest checks.
+- Run `python scripts\parse_sample.py` to see parsing of sample CSV.
+
