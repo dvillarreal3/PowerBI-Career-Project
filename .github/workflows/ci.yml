@@ -23,9 +23,13 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run linter
+      - name: Run linter (flake8)
         run: |
-          if command -v flake8 >/dev/null 2>&1; then flake8 || true; fi
+          echo "Running flake8..."
+          # Fail the job if flake8 reports any issues
+          python -m pip install --upgrade pip
+          pip install flake8
+          flake8 src tests
 
       - name: Run tests
         run: |
