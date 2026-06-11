@@ -24,5 +24,20 @@ Resources
 
 Next tasks for Week 1
 - Create README developer setup steps
-- Add example script and a unit test for it
+- Add example script and unit tests (created: src/etl_utils.py, tests/test_etl_utils.py)
 - Commit and push branch week-1-setup
+
+Sample module: src/etl_utils.py
+- Function: clean_amount(s) -> float|None
+- Purpose: Parse monetary strings to floats; robust to currency symbols and comma separators.
+- How to run tests: Activate venv, then run `pytest -q` in project root.
+- Why: Unit tests validate edge cases and ensure future refactors don't break behavior.
+
+Notes on TDD and testing practice
+- Start with a failing test to specify expected behavior, then implement minimal code to pass tests.
+- Keep tests small and deterministic (no network calls).
+- Use pytest's parametrize to expand cases later.
+
+Resources for testing
+- Pytest: https://docs.pytest.org/
+- Testing in Python (Real Python): https://realpython.com/pytest-python-testing/
