@@ -1,6 +1,7 @@
 import pytest
 from src.etl_utils import clean_amount
 
+
 @pytest.mark.parametrize("input_val,expected", [
     ("$1,234.56", 1234.56),
     ("1,234.56", 1234.56),

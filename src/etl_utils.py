@@ -1,7 +1,9 @@
 """
 Simple ETL utility functions for learning exercises.
 
-This module includes clean_amount for parsing monetary strings into floats. Docstring examples are included for doctest validation.
+This module includes clean_amount for parsing monetary strings into floats.
+
+This module includes doctest examples for validation.
 """
 
 import re
@@ -32,7 +34,8 @@ def clean_amount(s: Optional[Union[str, int, float]]) -> Optional[float]:
       - Leading '+' or '-' signs
 
     Heuristics (simple):
-      - If both '.' and ',' appear and '.' comes before ',', treat '.' as thousands and ',' as decimal (e.g. '1.234,56').
+      - If both '.' and ',' appear and '.' comes before ',':
+        treat '.' as thousands and ',' as decimal (e.g. '1.234,56').
       - If only ',' appears and the fraction part length is 2, treat ',' as decimal.
       - If only ',' appears and fraction length is 3, treat ',' as thousands.
 
@@ -60,7 +63,8 @@ def clean_amount(s: Optional[Union[str, int, float]]) -> Optional[float]:
     if s.startswith('+'):
         s = s[1:].strip()
 
-    # Remove currency codes/letters (e.g., USD, EUR) and leading/trailing currency symbols
+    # Remove currency codes/letters (e.g., USD, EUR)
+    # and leading/trailing currency symbols
     # Keep digits, dot, comma, minus and spaces
     s = re.sub(r"[A-Za-z€£¥₹$]+", '', s).strip()
 
